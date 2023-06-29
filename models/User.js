@@ -28,25 +28,25 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [8], //setting a min password length
+        len: [8],
       },
     },
   },
   {
     hooks: {
-      beforeCreate: async (newUserData) => { // newUserData is being created and used beacuse of sequelize
+      beforeCreate: async (newUserData) => {
         newUserData.password = await bcrypt.hash(newUserData.password, 10);
-        return newUserData; //hashing the password so that its not usable
+        return newUserData;
       },
       beforeUpdate: async (updatedUserData) => {
         updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
-        return updatedUserData; //hashing the password so that its not usable
+        return updatedUserData;
       },
     },
     sequelize,
     timestamps: false,
     freezeTableName: true,
-    underscored: true, // testTestTest convert to test_test_test INTERVIEW QUESTION
+    underscored: true, 
     modelName: 'user',
   }
 );
