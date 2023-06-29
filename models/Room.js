@@ -23,7 +23,7 @@ Room.init(
         sequelize,
         freezeTableName: true,
         timestamps: true,
-        modelName: 'messages'
+        modelName: 'room'
       });
 
 module.exports = Room;

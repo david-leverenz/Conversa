@@ -11,11 +11,11 @@ const seedAll = async () => {
   await seedUsers();
   console.log('\n----- USERS SEEDED -----\n');
 
-  await seedRooms();
-  console.log('\n----- ROOMS SEEDED -----\n');
+  // await seedRooms();
+  // console.log('\n----- ROOMS SEEDED -----\n');
 
-  await seedMessages();
-  console.log('\n----- MESSAGES SEEDED -----\n');
+  // await seedMessages();
+  // console.log('\n----- MESSAGES SEEDED -----\n');
 
   process.exit(0);
 };
