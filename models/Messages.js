@@ -15,7 +15,7 @@ Messages.init(
             type: DataTypes.TEXT,
             allowNull: false,
             validate: {
-                len: [10, 120],
+                len: [1, 120],
               },
         },  
         user_id: {
