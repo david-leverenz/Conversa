@@ -38,7 +38,6 @@ Messages.init(
         timestamps: true,
         modelName: 'messages'
       });
-        
 
       module.exports = Messages;
 
