@@ -12,15 +12,15 @@ User.hasMany (Messages, {
     onDelete: 'CASCADE'
 });
 
-Messages.belongsToOne (User, {
+Messages.belongsTo (User, {
     foreignKey: 'user_id'
 });
 
-Messages.belongsToOne (Room, {
+Messages.belongsTo (Room, {
     foreignKey: 'room_id'
 });
 
-User.belongsToOne (Room, {
+User.belongsTo (Room, {
     foreignKey: 'room_id'
 });
 
