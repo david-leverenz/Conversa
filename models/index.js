@@ -24,4 +24,4 @@ User.belongsToOne (Room, {
     foreignKey: 'room_id'
 });
 
-module.exports = {User, Room, Messages };
+module.exports = {User, Room, Messages }
