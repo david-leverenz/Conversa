@@ -1,0 +1,111 @@
+html, body{
+    height: 100%;
+    width: 100%;
+}
+
+html{
+    display: table;
+    margin: auto;
+}
+
+body{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+
+.gradient-custom {
+    /* fallback for old browsers */
+    background: linear-gradient(to right, rgba(106, 17, 203, 1),
+    rgba(37, 117, 252, 1), #cf23cf);
+    
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, rgba(106, 17, 203, 1),
+    rgba(37, 117, 252, 1), #cf23cf);
+    
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(106, 17, 203, 1),
+    rgba(37, 117, 252, 1), #cf23cf);
+    }
+
+#conversaHeader{
+    color: white
+}
+
+.chat-online {
+    color: #34ce57
+}
+
+.chat-offline {
+    color: #e4606d
+}
+
+.chat-messages {
+    display: flex;
+    flex-direction: column;
+    max-height: 800px;
+    overflow-y: scroll
+}
+
+.chat-message-left,
+.chat-message-right {
+    display: flex;
+    flex-shrink: 0
+}
+
+.chat-message-left {
+    margin-right: auto
+}
+
+.chat-message-right {
+    flex-direction: row-reverse;
+    margin-left: auto
+}
+.py-3 {
+    padding-top: 1rem!important;
+    padding-bottom: 1rem!important;
+}
+.px-4 {
+    padding-right: 1.5rem!important;
+    padding-left: 1.5rem!important;
+}
+.flex-grow-0 {
+    flex-grow: 0!important;
+}
+.border-top {
+    border-top: 1px solid #dee2e6!important;
+}
+.logo {
+    font-size: 45px;
+    background: linear-gradient(to right, rgba(106, 17, 203, 1),
+    rgba(37, 117, 252, 1), #cf23cf);
+            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text;
+
+}
+
+@media(min-width: 992px ) {
+    .dropdown-toggle{
+        display: none;
+    }
+    main{
+        background-color: #292b2c;
+        margin: auto;
+        padding: 10px 20px 35px 20px;
+        width: 50%;
+        border-radius: 5px;
+    }
+}
+
+@media(max-width: 992px){
+    .dropdown-toggle{
+        display: block;
+    }
+    main{
+        background-color: #292b2c;
+        margin: auto;
+        padding: 10px 20px 30px 20px;
+        width: 80%;
+        border-radius: 5px;
+    }
+}
