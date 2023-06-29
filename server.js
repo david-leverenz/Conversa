@@ -1,40 +1,24 @@
-const express = require('express');
-const session = require('express-session');
-const routes = require('./controllers');
-const exphbs = require('express-handlebars');
-const path = require('path');
-
-
-const sequelize = require('./config/connection');
-const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const app = express();
-const PORT = process.env.PORT || 3001;
-//use .env because we don't know what port the server will use
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
 
-const sess = {
-  secret: 'Super secret secret', //in industry you will use uuid to generate a random key
-  cookie: {},// use max and min for when user logs out?
-  resave: false,
-  saveUninitialized: true,
-  store: new SequelizeStore({
-    db: sequelize
-  })
-};
+app.use(express.static(__dirname + '/public'));
 
-app.use(session(sess));
+io.on('connection', (socket) => {
+    console.log('A user connected');
 
-const hbs = exphbs.create();
+    socket.on('disconnect', () => {
+        console.log('A user disconnected');
+    });
 
-app.engine('handlebars', hbs.engine);
-app.set('view engine', 'handlebars');
+    socket.on('message', (message) => {
+        console.log('Received message:', message);
+        io.emit('message', message);
+    });
+});
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
+http.listen(3001, () => {
+    console.log('Server started on port 3001');
 
-app.use(routes);
-
-sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log(`Now listening http://localhost:${PORT}/`));
 });
