@@ -13,17 +13,17 @@ const signupFormHandler = async (event) => {
       });
   
       if (response.ok) {
-        document.location.replace('/chat');
+        document.location.replace('/login');
       } else {
         alert(response.statusText);
       }
     }
   };
   
-  document
-    .querySelector('#loginBtn')
-    .addEventListener('submit', loginFormHandler);
+  // document
+  //   .querySelector('#loginBtn')
+  //   .addEventListener('click', loginFormHandler);
   
   document
     .querySelector('#signupBtn')
-    .addEventListener('submit', signupFormHandler);
+    .addEventListener('click', signupFormHandler);

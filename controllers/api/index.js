@@ -8,7 +8,7 @@ const chatRoutes = require('./chatRoutes');
 router.use('/login', loginRoutes);
 router.use('/logout', logoutRoutes);
 router.use('/signup', signupRoutes);
-router.use('/chat', chatRoutes);
+router.use('/', chatRoutes);
 //using routes for each file in the api folder
 
 module.exports = router;
