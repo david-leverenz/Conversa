@@ -41,27 +41,94 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(routes);
 
 
-io.on('connection', (socket) => {
-  console.log('A user connected');
+// io.on('connection', (socket) => {
+//   console.log('A user connected');
 
-  socket.on('disconnect', () => {
-    console.log('A user disconnected');
+//   socket.on('disconnect', () => {
+//     console.log('A user disconnected');
+//   });
+
+//   socket.on('message', (message) => {
+//     console.log('Received message:', message);
+//     Messages.create({ message_text: message})
+//       .then((message) => {
+//         console.log('Message stored in the database:', message);
+//         let newMessage = message.get({ plain: true })
+//         // io.emit('message', newMessage.message_text); // Broadcast the message to all connected clients
+//         io.emit('message', 'messageAdded')
+//       })
+//       .catch((error) => {
+//         console.error('Error storing message in the database:', error);
+//       });
+//   });
+// });
+
+var usernames = {};
+var rooms = [
+  { name: "global", creator: "Anonymous" },
+  { name: "chess", creator: "Anonymous" },
+];
+
+io.on("connection", function (socket) {
+  console.log(`User connected to server.`);
+
+  socket.on("createUser", function (username) {
+    socket.username = username;
+    usernames[username] = username;
+    socket.currentRoom = "global";
+    socket.join("global");
+
+    console.log(`User ${username} created on server successfully.`);
+
+    socket.emit("updateChat", "INFO", "You have joined global room");
+    socket.broadcast
+      .to("global")
+      .emit("updateChat", "INFO", username + " has joined global room");
+    io.sockets.emit("updateUsers", usernames);
+    socket.emit("updateRooms", rooms, "global");
   });
 
-  socket.on('message', (message) => {
-    console.log('Received message:', message);
-    Messages.create({ message_text: message})
-      .then((message) => {
-        console.log('Message stored in the database:', message);
-        let newMessage = message.get({ plain: true })
-        // io.emit('message', newMessage.message_text); // Broadcast the message to all connected clients
-        io.emit('message', 'messageAdded')
-      })
-      .catch((error) => {
-        console.error('Error storing message in the database:', error);
-      });
+  socket.on("sendMessage", function (data) {
+    io.sockets.to(socket.currentRoom).emit("updateChat", socket.username, data);
+  });
+
+  socket.on("createRoom", function (room) {
+    if (room != null) {
+      rooms.push({ name: room, creator: socket.username });
+      // run Room.create({ name: room, creator: socket.username })
+      io.sockets.emit("updateRooms", rooms, null);
+    }
+  });
+
+  socket.on("updateRooms", function (room) {
+    socket.broadcast
+      .to(socket.currentRoom)
+      .emit("updateChat", "INFO", socket.username + " left room");
+    socket.leave(socket.currentRoom);
+    socket.currentRoom = room;
+    socket.join(room);
+    socket.emit("updateChat", "INFO", "You have joined " + room + " room");
+    socket.broadcast
+      .to(room)
+      .emit(
+        "updateChat",
+        "INFO",
+        socket.username + " has joined " + room + " room"
+      );
+  });
+
+  socket.on("disconnect", function () {
+    console.log(`User ${socket.username} disconnected from server.`);
+    delete usernames[socket.username];
+    io.sockets.emit("updateUsers", usernames);
+    socket.broadcast.emit(
+      "updateChat",
+      "INFO",
+      socket.username + " has disconnected"
+    );
   });
 });
+
 
 
 
