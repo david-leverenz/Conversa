@@ -21,9 +21,9 @@ N/A
 ## Help
 No known issues.
 ## Authors
-Ana Grisham<br>
 Nicholas Gianini<br>
-Trevor Khuner<br>
+Ana Grisham<br>
+Trevor Kuhner<br>
 David Leverenz<br>
 
 ## Version History
