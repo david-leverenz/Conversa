@@ -3,12 +3,17 @@ const session = require('express-session');
 const routes = require('./controllers');
 const exphbs = require('express-handlebars');
 const path = require('path');
+const app = express();
+
+
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
+const {Messages} = require('./models/');
 
 
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
-const app = express();
 const PORT = process.env.PORT || 3001;
 //use .env because we don't know what port the server will use
 
@@ -35,6 +40,32 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
 
+
+io.on('connection', (socket) => {
+  console.log('A user connected');
+
+  socket.on('disconnect', () => {
+    console.log('A user disconnected');
+  });
+
+  socket.on('message', (message) => {
+    console.log('Received message:', message);
+    Messages.create({ message_text: message})
+      .then((message) => {
+        console.log('Message stored in the database:', message);
+        let newMessage = message.get({ plain: true })
+        // io.emit('message', newMessage.message_text); // Broadcast the message to all connected clients
+        io.emit('message', 'messageAdded')
+      })
+      .catch((error) => {
+        console.error('Error storing message in the database:', error);
+      });
+  });
+});
+
+
+
+
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log(`Now listening http://localhost:${PORT}/`));
+  http.listen(PORT, () => console.log(`Now listening http://localhost:${PORT}/`));
 });
