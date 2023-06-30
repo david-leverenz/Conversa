@@ -76,13 +76,33 @@ body{
     border-top: 1px solid #dee2e6!important;
 }
 .logo {
-    font-size: 45px;
+    font-size: 60px;
     background: linear-gradient(to right, rgba(106, 17, 203, 1),
     rgba(37, 117, 252, 1), #cf23cf);
             -webkit-text-fill-color: transparent;
             -webkit-background-clip: text;
 
 }
+
+.logo2 {
+    font-size: 30px;
+    background: linear-gradient(to right, rgba(106, 17, 203, 1),
+    rgba(37, 117, 252, 1), #cf23cf);
+            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text;
+
+}
+
+
+.loginBtn{
+    background: linear-gradient(to right, #ed43ed,#ed43ed
+    );
+            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text;
+}
+
+
+
 
 @media(min-width: 992px ) {
     .dropdown-toggle{
