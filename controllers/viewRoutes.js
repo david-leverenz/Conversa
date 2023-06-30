@@ -1,7 +1,8 @@
 const router = require('express').Router();
 const { User, Messages, Room} = require('../models');
+const auth = require('../../utils/auth')
 
-router.get('/', async (req, res) => {
+router.get('/', auth, async (req, res) => {
     try {
         const roomData = await Room.findAll({
             include: [{
@@ -26,15 +27,15 @@ router.get('/login', async (req, res) => {
     };
 });
 
-router.get('/profile', async (req, res) => {
-    try {
+// router.get('/profile', async (req, res) => {
+//     try {
        
-        res.render('profile');
-    } catch (error) {
-        res.status(500).json(error)
-    };
-});
-
+//         res.render('profile');
+//     } catch (error) {
+//         res.status(500).json(error)
+//     };
+// });
+// not sure what this is doing:)
 
 
 module.exports = router;

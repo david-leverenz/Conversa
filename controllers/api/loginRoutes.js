@@ -1,10 +1,10 @@
 const router = require('express').Router();
 const { User } = require('../../models');
+const auth = require('../../utils/auth')
 
-router.post('/', async (req, res) => {
+router.post('/', auth, async (req, res) => {
     try {
         const userData = await User.findOne({ where: { email: req.body.email } });
-        console.log(userData);
         if (!userData) {
             res
                 .status(400)
