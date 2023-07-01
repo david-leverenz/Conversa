@@ -1,3 +1,4 @@
+// This is the jumping off route for the api routes.
 const router = require('express').Router();
 const loginRoutes = require('./loginRoutes');
 const logoutRoutes = require('./logoutRoutes');

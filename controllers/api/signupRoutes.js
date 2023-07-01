@@ -1,3 +1,5 @@
+// It was decided to handle user routes in three separate files: "loginRoutes", "logoutRoutes" and "signupRoutes".
+// This is the signup route.
 const router = require('express').Router();
 const { User } = require('../../models');
 //allowing users to create new userdata 

@@ -1,3 +1,5 @@
+// It was decided to handle user routes in three separate files: "loginRoutes", "logoutRoutes" and "signupRoutes".
+// This is the login route.  It finds the user and then validates the password with the checkPassword call.
 const router = require('express').Router();
 const { User } = require('../../models');
 const auth = require('../../utils/auth')
