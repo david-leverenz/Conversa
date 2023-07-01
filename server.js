@@ -41,27 +41,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(routes);
 
 
-// io.on('connection', (socket) => {
-//   console.log('A user connected');
 
-//   socket.on('disconnect', () => {
-//     console.log('A user disconnected');
-//   });
-
-//   socket.on('message', (message) => {
-//     console.log('Received message:', message);
-//     Messages.create({ message_text: message})
-//       .then((message) => {
-//         console.log('Message stored in the database:', message);
-//         let newMessage = message.get({ plain: true })
-//         // io.emit('message', newMessage.message_text); // Broadcast the message to all connected clients
-//         io.emit('message', 'messageAdded')
-//       })
-//       .catch((error) => {
-//         console.error('Error storing message in the database:', error);
-//       });
-//   });
-// });
 
 var usernames = {};
 var rooms = [
@@ -69,8 +49,11 @@ var rooms = [
   { name: "chess", creator: "Anonymous" },
 ];
 
+
+
 io.on("connection", function (socket) {
   console.log(`User connected to server.`);
+
 
   socket.on("createUser", function (username) {
     socket.username = username;
