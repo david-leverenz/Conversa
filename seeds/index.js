@@ -1,3 +1,4 @@
+// This seeds the database with data from Mockaroo.  Mockaroo exports JSON so it was really slick.  It creates 10 users, 5 rooms and 50 messages.  The associations between the files were randomly generated.
 const seedUsers = require('./userSeeds');
 const seedRooms = require('./roomSeeds');
 const seedMessages = require('./messagesSeeds');
