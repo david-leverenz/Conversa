@@ -1,3 +1,4 @@
+// Uses "auth" to prevent direct route access.  First route gets all room and associated user data. Login and signup routes render the login and signup handlebars pages.  Chat and profile routes are commented out.  Chat is handled in "chatRoutes" file.  Not sure if "profile" is needed.  I am leaving them here in case we need them later.  Need to remove them if they are not going to be used.
 const router = require('express').Router();
 const { User, Messages, Room} = require('../models');
 const auth = require('../utils/auth')
