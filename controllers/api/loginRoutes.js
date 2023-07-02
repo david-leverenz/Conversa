@@ -14,7 +14,7 @@ const auth = require('../../utils/auth')
 //     res.status(200).json({ message: 'Post route' });
 // });
 
-router.post('/', async (req, res) => {
+// router.post('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
     try {

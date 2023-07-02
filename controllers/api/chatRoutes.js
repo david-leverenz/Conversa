@@ -13,17 +13,13 @@ router.get('/:id', async (req, res) => {
             include:[{model:User, through:Messages}],
         });
         
-        console.log(roomData);
+        // console.log(roomData);
         res.json(roomData)
-     
-
-//         console.log(roomData);
-//         res.json(roomData)
 
 
-//     } catch (err) {
-//         res.status(400).json(err);
-//     }
-// });
+    } catch (err) {
+        res.status(400).json(err);
+    }
+});
 
 module.exports = router;
