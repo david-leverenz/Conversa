@@ -15,18 +15,18 @@ var myUsername = "";
 
 // Prompt for username on connecting to server
 socket.on("connect", function () {
-    // const response = fetch('/api/session', {
-    //     method: 'GET',
-    // }).then((res) => res.json())
-    //     .then((response) => {
+    const response = fetch('/api/session', {
+        method: 'GET',
+    }).then((res) => res.json())
+        .then((response) => {
 
-    //         console.log("before response");
-    //         //console.log(response);
+            console.log("before response");
+            //console.log(response);
 
-    //         socket.emit("createUser", response);
-    //     });
-    myUsername = prompt("Enter name: ");
-    socket.emit("createUser", myUsername);
+            socket.emit("createUser", response);
+        });
+    // myUsername = prompt("Enter name: ");
+    // socket.emit("createUser", myUsername);
 });
 
 // Send message on button click
