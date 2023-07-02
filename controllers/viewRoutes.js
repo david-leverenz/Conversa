@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
             }]
         });
         const newRoomData = roomData.map(room => room.get ({ plain:true }));
-        console.log(newRoomData);
+        //console.log(newRoomData);
         res.render('chat', {newRoomData});
     } catch (error) {
         res.status(500).json(error)
@@ -50,6 +50,20 @@ router.get('/signup', async (req,res) => {
 //         res.status(500).json(error)
 //     };
 // });
+
+// router.get('/sessions', async (req, res) => {
+//     try {
+//         const sessions = req.session.userName;
+//         // Respond with the fetched sessions
+//         res.json(sessions);
+//     } catch (error) {
+//         // Handle any errors that occurred during the database operation
+//         console.error('Error retrieving sessions:', error);
+//         res.status(500).json({ error: 'Failed to retrieve sessions' });
+//     }
+// });
+
+
 
 
 

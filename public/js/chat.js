@@ -11,10 +11,18 @@ var chatDisplay = document.getElementById("chat");
 var currentRoom = "global";
 var myUsername = "";
 
+
+
 // Prompt for username on connecting to server
 socket.on("connect", function () {
-    myUsername = prompt("Enter name: ");
-    socket.emit("createUser", myUsername);
+    const response = fetch('/api/session', {
+        method: 'GET',
+    }).then((res) => res.json())
+        .then((response) => {
+
+            socket.emit("createUser", response);
+        });
+
 });
 
 // Send message on button click
