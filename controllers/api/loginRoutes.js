@@ -5,6 +5,8 @@ const auth = require('../../utils/auth')
 
 
 router.post('/', auth, async (req, res) => {
+    console.log(req.body);
+    // console.log(res);
     console.log("here at post!");
     try {
         const userData = await User.findOne({ where: { username: req.body.username } });
@@ -44,6 +46,8 @@ router.post('/', auth, async (req, res) => {
 
 
     } catch (err) {
+        console.log(err);
+
         res.status(400).json(err);
     }
 });
