@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
         });
         const newRoomData = roomData.map(room => room.get ({ plain:true }));
         //console.log(newRoomData);
-        res.render('chat', {newRoomData});
+        res.render('login', {newRoomData});
     } catch (error) {
         res.status(500).json(error)
     };
@@ -24,10 +24,10 @@ router.get('/', async (req, res) => {
 //     res.render('chat')
 // })
 // // com
-router.get('/login', async (req, res) => {
+router.get('/chat', async (req, res) => {
     try {
 
-        res.render('login');
+        res.render('chat');
     } catch (error) {
         res.status(500).json(error)
     };

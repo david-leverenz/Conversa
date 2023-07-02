@@ -2,7 +2,7 @@
 
 const loginFormHandler = async (event) => {
     event.preventDefault();
- 
+
 
     const username = document.querySelector('#loginUsername').value.trim();
     const password = document.querySelector('#loginPassword').value.trim();
@@ -17,7 +17,7 @@ const loginFormHandler = async (event) => {
 
         if (response.ok) {
             // userName = username;
-            document.location.replace('/');
+            document.location.replace('/chat');
         } else {
             alert(response.statusText);
         }
