@@ -1,3 +1,4 @@
+// Room names are random words.  Room descriptions are gibberish.  I wish I understood latin.
 const { Room } = require('../models');
 
 const roomData = [
