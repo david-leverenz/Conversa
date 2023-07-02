@@ -1,8 +1,19 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 # Conversa
-This is a chat application designed for Bootcamp students.<br>
+This is a chat application designed for Bootcamp students.
+
+ ## Table of Contents
+ - [Installation](#Installation)
+ - [Usage](#Usage)
+ - [License](#License)
+ - [Contributions](#Contributions)
+ - [Tests](#Tests)
+ - [Demo](#Demo)
+ - [Questions](#Questions)
+
 ## Description
+
 
 
 ## Links
@@ -12,15 +23,15 @@ This is a chat application designed for Bootcamp students.<br>
 **Screen Shot:** <br>
 
 
-## Getting Started
+## Usage
 N/A
 ### Dependencies
 N/A
 ### Executing program
 N/A
-## Help
+## Tests
 No known issues.
-## Authors
+## Contributions
 Nicholas Gianini<br>
 Ana Grisham<br>
 Trevor Kuhner<br>
