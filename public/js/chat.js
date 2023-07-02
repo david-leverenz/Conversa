@@ -20,13 +20,9 @@ socket.on("connect", function () {
     }).then((res) => res.json())
         .then((response) => {
 
-            console.log("before response");
-            //console.log(response);
-
             socket.emit("createUser", response);
         });
-    // myUsername = prompt("Enter name: ");
-    // socket.emit("createUser", myUsername);
+
 });
 
 // Send message on button click

@@ -2,24 +2,22 @@ const router = require('express').Router();
 const { User } = require('../../models');
 const auth = require('../../utils/auth')
 
-router.get('/', async (req, res) => {
-    console.log('test route');
-    res.status(200).json({ message: 'test route' });
-});
+// router.get('/', async (req, res) => {
+//     console.log('test route');
+//     res.status(200).json({ message: 'test route' });
+// });
 
-router.post('/test', async (req, res) => {
-    console.log('Post route');
-    res.status(200).json({ message: 'Post route' });
-});
+// router.post('/test', async (req, res) => {
+//     console.log('Post route');
+//     res.status(200).json({ message: 'Post route' });
+// });
 
 router.post('/', async (req, res) => {
-    console.log(req.body);
-    // console.log(res);
-    console.log("here at post!");
+
     try {
         const userData = await User.findOne({ where: { username: req.body.username } });
-        console.log('userData');
-        console.log(userData);
+        // console.log('userData');
+        // console.log(userData);
         if (!userData) {
             res
                 .status(400)
@@ -28,9 +26,9 @@ router.post('/', async (req, res) => {
         }
 
         const validPassword = await userData.checkPassword(req.body.password);
-        console.log('validPassword');
+        // console.log('validPassword');
 
-        console.log(validPassword);
+        // console.log(validPassword);
 
         if (!validPassword) {
             res
@@ -49,12 +47,12 @@ router.post('/', async (req, res) => {
 
         });
 
-        console.log('req.session on log in');
-        console.log(req.session);
+        // console.log('req.session on log in');
+        // console.log(req.session);
 
 
     } catch (err) {
-        console.log(err);
+        // console.log(err);
 
         res.status(400).json(err);
     }
