@@ -81,6 +81,7 @@ body{
     rgba(37, 117, 252, 1), #cf23cf);
             -webkit-text-fill-color: transparent;
             -webkit-background-clip: text;
+            background-clip: text;
 
 }
 
@@ -90,6 +91,7 @@ body{
     rgba(37, 117, 252, 1), #cf23cf);
             -webkit-text-fill-color: transparent;
             -webkit-background-clip: text;
+            background-clip: text;
 
 }
 
@@ -99,6 +101,7 @@ body{
     );
             -webkit-text-fill-color: transparent;
             -webkit-background-clip: text;
+            background-clip: text;
 }
 
 

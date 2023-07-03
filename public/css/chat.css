@@ -39,10 +39,9 @@ button {
     display: flex;
     flex-direction: column;
     flex: 1;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
-    background-color: #f4f6fb;
-    background-color: rgba(245, 250, 255, 1);
+
     height: 100vh;
 }
 
@@ -135,7 +134,7 @@ button.enter_chat_btn {
     flex-direction: row;
     justify-content: center;
     margin: 50px;
-    width: 80%;
+    width: 70%;
     background-color: #fff;
     box-shadow: 0px 10px 20px rgba(113, 113, 113, 0.1);
     border-radius: 20px;
@@ -337,7 +336,7 @@ button.enter_chat_btn {
 }
 
 .send_message_btn {
-    background-color: #1ecdc5;
+    background-color: #3B71CA;
     cursor: pointer;
     border: 0;
     border-radius: 10px;
@@ -465,7 +464,7 @@ button:focus {
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    background-color: #1ecdc5;
+    background-color: #3B71CA;
     border-radius: 4px;
     padding: 5px 8px;
     color: #fff;

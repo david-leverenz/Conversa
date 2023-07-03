@@ -13,6 +13,9 @@ var myUsername = "";
 
 // Prompt for username on connecting to server
 socket.on("connect", function () {
+    // remove prompt, grab logged in user's username from req.session
+    // can be done through fetch api call to backend
+    // user route to get username
     myUsername = prompt("Enter name: ");
     socket.emit("createUser", myUsername);
 });
@@ -46,8 +49,7 @@ socket.on("updateChat", function (username, data) {
         chatDisplay.innerHTML += `<div class="announcement"><span>${data}</span></div>`;
     } else {
         console.log("Displaying user message");
-        chatDisplay.innerHTML += `<div class="message_holder ${username === myUsername ? "me" : ""
-            }">
+        chatDisplay.innerHTML += `<div class="message_holder ${username === myUsername ? "me" : ""}">
                                 <div class="pic"></div>
                                 <div class="message_box">
                                   <div id="message" class="message">
@@ -60,6 +62,12 @@ socket.on("updateChat", function (username, data) {
 
     chatDisplay.scrollTop = chatDisplay.scrollHeight;
 });
+
+
+
+
+
+
 
 socket.on("updateUsers", function (usernames) {
     userlist.innerHTML = "";
