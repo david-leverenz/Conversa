@@ -6,7 +6,7 @@ var message = document.getElementById("messageInput");
 var sendMessageBtn = document.getElementById("send_message_btn");
 var roomInput = document.getElementById("roomInput");
 var createRoomBtn = document.getElementById("room_add_icon_holder");
-var chatDisplay = document.getElementById("chat");
+var chatDisplay = document.getElementById("chatHead");
 
 var currentRoom = "global";
 var myUsername = "";
@@ -51,7 +51,9 @@ createRoomBtn.addEventListener("click", function () {
 socket.on("updateChat", function (username, data) {
     if (username === "INFO") {
         console.log("Displaying announcement");
-        chatDisplay.innerHTML += `<div class="announcement"><span>${data}</span></div>`;
+        chatDisplay.innerHTML = `<div id="chatHead">
+        <strong>${data}</strong>
+    </div>`;
     } else {
         console.log("Displaying user message");
         chatDisplay.innerHTML += `<div class="message_holder ${username === myUsername ? "me" : ""}">
