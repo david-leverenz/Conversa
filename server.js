@@ -90,6 +90,7 @@ io.on("connection", function (socket) {
     socket.leave(socket.currentRoom);
     socket.currentRoom = room;
     socket.join(room);
+    // emit message updating the room
     socket.emit("updateChat", "INFO", "You have joined " + room + " room");
     socket.broadcast
       .to(room)
