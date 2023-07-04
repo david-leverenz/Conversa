@@ -59,7 +59,11 @@ main {
 #logoutBtn{
     display: flex;
     justify-self: end;
+    padding-bottom: 2px;
+    border-radius: 10px;
 }
+
+
 
 #usersList {
     padding-top: 1rem;
@@ -173,8 +177,9 @@ main {
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     background-clip: text;
-    padding: 1rem 0rem .5rem 20px;
-    font-weight: 600;
+    padding: 1rem 1rem .5rem 20px;
+    font-weight: 700;
+    text-align: start;
 }
 
 .logo2 {
@@ -298,6 +303,7 @@ button:focus {
     align-items: center;
     padding: 10px 20px;
     border-radius: 0 10px 10px 0;
+    justify-content: space-between;
 }
 
 .room_add_icon_holder {
@@ -332,8 +338,7 @@ button:focus {
     justify-content: center;
     /* background-color: pink; */
     border-radius: 10px;
-    margin: 10px 0;
-    padding: 10px 0;
+
     width: 100%;
 }
 

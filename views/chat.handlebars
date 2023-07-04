@@ -8,7 +8,7 @@
 
                 <div class="room_input">
                     <input type="text" id="roomInput" placeholder="Create room" />
-                    <button id="room_add_icon_holder" class="room_add_icon_holder">
+                    <button id="room_add_icon_holder" class="room_add_icon_holder btn-primary">
                         +
                     </button>
                 </div>
@@ -16,9 +16,7 @@
 
             <div class="chat_area">
                 <div id="chatHead">
-                    <button id="logoutBtn" class="logoutBtn">
-                        LOGOUT
-                    </button>
+                    
                 </div>
 
                 <div class="chat_bg">
@@ -26,7 +24,7 @@
 
                     <div class="chat_input">
                         <input type="text" id="messageInput" placeholder="Enter message" />
-                        <button id="send_message_btn" class="send_message_btn" id="send">
+                        <button id="send_message_btn" class="send_message_btn btn-primary" id="send">
                             SEND
                         </button>
                     </div>
@@ -39,6 +37,9 @@
                     <div id="active_users_list" class="active_users_list"></div>
                 </div>
                 <hr>
+                <div id="logoutBtn">
+                    <button href="/logout" class="btn btn-primary">Logout</button>
+                </div>
 
             </div>
         </div>
