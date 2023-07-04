@@ -1,3 +1,4 @@
+// Uses "auth" to prevent direct route access.  First route gets all room and associated user data. Login and signup routes render the login and signup handlebars pages.  Chat and profile routes are commented out.  Chat is handled in "chatRoutes" file.  Not sure if "profile" is needed.  I am leaving them here in case we need them later.  Need to remove them if they are not going to be used.
 const router = require('express').Router();
 const { User, Messages, Room} = require('../models');
 const auth = require('../utils/auth')
@@ -11,8 +12,8 @@ router.get('/', async (req, res) => {
             }]
         });
         const newRoomData = roomData.map(room => room.get ({ plain:true }));
-        console.log(newRoomData);
-        res.render('chat', {newRoomData});
+        //console.log(newRoomData);
+        res.render('login', {newRoomData});
     } catch (error) {
         res.status(500).json(error)
     };
@@ -26,24 +27,8 @@ router.get('/', async (req, res) => {
 // // com
 router.get('/chat', async (req, res) => {
     try {
-        const roomData = await Room.findAll({
-            include: [{
-                model: User,
-                through: Messages,
-            }]
-        });
-        const newRoomData = roomData.map(room => room.get ({ plain:true }));
-        console.log(newRoomData);
-        res.render('chat', {newRoomData});
-    } catch (error) {
-        res.status(500).json(error)
-    };
-});
 
-router.get('/login', async (req, res) => {
-    try {
-
-        res.render('login');
+        res.render('chat');
     } catch (error) {
         res.status(500).json(error)
     };
@@ -65,6 +50,20 @@ router.get('/signup', async (req,res) => {
 //         res.status(500).json(error)
 //     };
 // });
+
+// router.get('/sessions', async (req, res) => {
+//     try {
+//         const sessions = req.session.userName;
+//         // Respond with the fetched sessions
+//         res.json(sessions);
+//     } catch (error) {
+//         // Handle any errors that occurred during the database operation
+//         console.error('Error retrieving sessions:', error);
+//         res.status(500).json({ error: 'Failed to retrieve sessions' });
+//     }
+// });
+
+
 
 
 

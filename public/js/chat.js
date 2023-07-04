@@ -11,13 +11,18 @@ var chatDisplay = document.getElementById("chat");
 var currentRoom = "global";
 var myUsername = "";
 
+
+
 // Prompt for username on connecting to server
 socket.on("connect", function () {
-    // remove prompt, grab logged in user's username from req.session
-    // can be done through fetch api call to backend
-    // user route to get username
-    myUsername = prompt("Enter name: ");
-    socket.emit("createUser", myUsername);
+    const response = fetch('/api/session', {
+        method: 'GET',
+    }).then((res) => res.json())
+        .then((response) => {
+
+            socket.emit("createUser", response);
+        });
+
 });
 
 // Send message on button click
