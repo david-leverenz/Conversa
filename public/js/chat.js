@@ -92,7 +92,7 @@ socket.on("updateRooms", function (rooms, newRoom) {
                                 <div class="room_item_content">
                                     <div class="roomInfo">
                                     <span class="room_name">#${rooms[index].name}</span>
-                                    <span class="room_author">${rooms[index].destription}</span>
+                                    <span class="room_author">${rooms[index].description}</span>
                                     </div>
                                 </div>
                             </div>`;
