@@ -103,6 +103,7 @@ socket.on("updateRooms", function (rooms, newRoom) {
 
 function changeRoom(room) {
     if (room != currentRoom) {
+        chatDisplay.innerHTML = "";
         socket.emit("updateRooms", room);
         document.getElementById(currentRoom).classList.remove("active_item");
         currentRoom = room;
