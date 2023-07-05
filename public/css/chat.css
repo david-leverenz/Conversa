@@ -6,11 +6,14 @@ button {
 
 html,
 body {
+    position:absolute;
+
     height: 100%;
     width: 100%;
 }
 
 html {
+    
     display: table;
     margin: auto;
 }
@@ -18,9 +21,12 @@ html {
 body {
     display: table-cell;
     vertical-align: middle;
+
 }
 
-main {
+.main {
+    /* background: linear-gradient(to right, rgba(106, 17, 203, 1),
+            rgba(37, 117, 252, 1), #cf23cf); */
     background-color: #292b2c;
     margin: auto;
     height: 80%;
@@ -33,13 +39,18 @@ main {
     background: linear-gradient(to right, rgba(106, 17, 203, 1),
             rgba(37, 117, 252, 1), #cf23cf);
 
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, rgba(106, 17, 203, 1),
-            rgba(37, 117, 252, 1), #cf23cf);
+            /* background-color: #292b2c; */
+}
 
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right, rgba(106, 17, 203, 1),
-            rgba(37, 117, 252, 1), #cf23cf);
+#chatPageLogo {
+    background: linear-gradient(to top, white, purple, black, black);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+    font-size: 75px;
 }
 
 #chatHead {
@@ -56,11 +67,13 @@ main {
 #conversaHeader {
     color: white
 }
-#logoutBtn{
+
+#logoutBtn {
     display: flex;
-    justify-self: end;
-    padding-bottom: 2px;
     border-radius: 10px;
+    text-align: center;
+    margin:auto;
+    margin-bottom: 3px;
 }
 
 
@@ -89,8 +102,9 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 90%;
-
+    height: 100%;
+    margin: auto;
+    padding: 1em;
 }
 
 .active_item {
@@ -138,6 +152,7 @@ main {
     margin-right: 5px;
 }
 
+
 .chat-messages {
     display: flex;
     flex-direction: column;
@@ -171,15 +186,19 @@ main {
 }
 
 .chatLogo {
-    font-size: 30px;
-    background: linear-gradient(to right, rgba(106, 17, 203, 1),
+    /* background: linear-gradient(to right, rgba(106, 17, 203, 1),
             rgba(37, 117, 252, 1), #cf23cf);
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
-    background-clip: text;
-    padding: 1rem 1rem .5rem 20px;
-    font-weight: 700;
-    text-align: start;
+    background-clip: text; */
+    position: relative;
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+    font-size: 75px;
+    color: white;
+    justify-content: center;
 }
 
 .logo2 {
@@ -266,6 +285,7 @@ button:focus {
     align-items: flex-start;
     margin: 10px 0;
 }
+
 .me {
     justify-content: flex-end;
 }
@@ -411,6 +431,7 @@ button:focus {
     font-weight: 600;
     color: rgb(55, 65, 81);
 }
+
 .user_card {
     display: flex;
     flex-direction: row;
