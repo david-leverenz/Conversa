@@ -10,7 +10,7 @@ const chatHead = document.getElementById("chatHead");
 const chatDisplay = document.getElementById("chat");
 
 let currentRoom = "global";
-let myUsername = "";
+var myUsername = "";
 
 
 
@@ -20,7 +20,7 @@ socket.on("connect", function () {
         method: 'GET',
     }).then((res) => res.json())
         .then((response) => {
-
+            myUsername = response;
             socket.emit("createUser", response);
         });
 
@@ -51,7 +51,7 @@ createRoomBtn.addEventListener("click", function () {
 
 // Update chat on new message
 socket.on("updateChat", function (username, data) {
-    console.log(username + " = username");
+   
 
     // Display announcement if username is INFO
     if (username === "INFO") {
