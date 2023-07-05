@@ -1,15 +1,16 @@
-var socket = io();
+const socket = io();
 
-var userlist = document.getElementById("active_users_list");
-var roomlist = document.getElementById("active_rooms_list");
-var message = document.getElementById("messageInput");
-var sendMessageBtn = document.getElementById("send_message_btn");
-var roomInput = document.getElementById("roomInput");
-var createRoomBtn = document.getElementById("room_add_icon_holder");
-var chatDisplay = document.getElementById("chat");
+const userlist = document.getElementById("active_users_list");
+const roomlist = document.getElementById("active_rooms_list");
+const message = document.getElementById("messageInput");
+const sendMessageBtn = document.getElementById("send_message_btn");
+const roomInput = document.getElementById("roomInput");
+const createRoomBtn = document.getElementById("room_add_icon_holder");
+const chatHead = document.getElementById("chatHead");
+const chatDisplay = document.getElementById("chat");
 
-var currentRoom = "global";
-var myUsername = "";
+let currentRoom = "global";
+let myUsername = "";
 
 
 
@@ -48,15 +49,17 @@ createRoomBtn.addEventListener("click", function () {
     }
 });
 
+// Update chat on new message
 socket.on("updateChat", function (username, data) {
+    console.log(username + " = username");
+
+    // Display announcement if username is INFO
     if (username === "INFO") {
         console.log("Displaying announcement");
-        chatDisplay.innerHTML += `<div class="announcement"><span>${data}</span></div>`;
+        chatHead.innerHTML = `<strong>${data}</strong>`;
     } else {
         console.log("Displaying user message");
-        chatDisplay.innerHTML += `<div class="message_holder ${username === myUsername ? "me" : ""
-            }">
-                                <div class="pic"></div>
+        chatDisplay.innerHTML += `<div class="message_holder ${username === myUsername ? "me" : ""}">
                                 <div class="message_box">
                                   <div id="message" class="message">
                                     <span class="message_name">${username}</span>
@@ -69,12 +72,12 @@ socket.on("updateChat", function (username, data) {
     chatDisplay.scrollTop = chatDisplay.scrollHeight;
 });
 
+// Update user list on new user connection/disconnection
 socket.on("updateUsers", function (usernames) {
     userlist.innerHTML = "";
     console.log("usernames returned from server", usernames);
-    for (var user in usernames) {
+    for (let user in usernames) {
         userlist.innerHTML += `<div class="user_card">
-                              <div class="pic"></div>
                               <span>${user}</span>
                             </div>`;
     }
@@ -83,11 +86,10 @@ socket.on("updateUsers", function (usernames) {
 socket.on("updateRooms", function (rooms, newRoom) {
     roomlist.innerHTML = "";
 
-    for (var index in rooms) {
+    for (let index in rooms) {
         roomlist.innerHTML += `<div class="room_card" id="${rooms[index].name}"
                                 onclick="changeRoom('${rooms[index].name}')">
                                 <div class="room_item_content">
-                                    <div class="pic"></div>
                                     <div class="roomInfo">
                                     <span class="room_name">#${rooms[index].name}</span>
                                     <span class="room_author">${rooms[index].creator}</span>

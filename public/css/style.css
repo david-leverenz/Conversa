@@ -1,44 +1,50 @@
-html, body{
+html,
+body {
     height: 100%;
     width: 100%;
 }
 
-html{
+html {
     display: table;
     margin: auto;
 }
 
-body{
+body {
     display: table-cell;
     vertical-align: middle;
 }
 
+main {
+    background-color: #292b2c;
+    margin: auto;
+    height: 80%;
+    width: 80%;
+    border-radius: 10px;
+}
 
 .gradient-custom {
     /* fallback for old browsers */
     background: linear-gradient(to right, rgba(106, 17, 203, 1),
-    rgba(37, 117, 252, 1), #cf23cf);
-    
+            rgba(37, 117, 252, 1), #cf23cf);
+
     /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, rgba(106, 17, 203, 1),
-    rgba(37, 117, 252, 1), #cf23cf);
-    
+            rgba(37, 117, 252, 1), #cf23cf);
+
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     background: linear-gradient(to right, rgba(106, 17, 203, 1),
-    rgba(37, 117, 252, 1), #cf23cf);
-    }
+            rgba(37, 117, 252, 1), #cf23cf);
+}
 
-#conversaHeader{
+#conversaHeader {
     color: white
 }
 
-.chat-online {
-    color: #34ce57
+#usersList {
+    padding-top: 1rem;
 }
 
-.chat-offline {
-    color: #e4606d
-}
+
 
 .chat-messages {
     display: flex;
@@ -61,57 +67,58 @@ body{
     flex-direction: row-reverse;
     margin-left: auto
 }
-.py-3 {
-    padding-top: 1rem!important;
-    padding-bottom: 1rem!important;
-}
-.px-4 {
-    padding-right: 1.5rem!important;
-    padding-left: 1.5rem!important;
-}
-.flex-grow-0 {
-    flex-grow: 0!important;
-}
-.border-top {
-    border-top: 1px solid #dee2e6!important;
-}
+
+
 .logo {
     font-size: 60px;
     background: linear-gradient(to right, rgba(106, 17, 203, 1),
-    rgba(37, 117, 252, 1), #cf23cf);
-            -webkit-text-fill-color: transparent;
-            -webkit-background-clip: text;
+            rgba(37, 117, 252, 1), #cf23cf);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+
+}
+
+.chatLogo {
+    font-size: 30px;
+    background: linear-gradient(to right, rgba(106, 17, 203, 1),
+            rgba(37, 117, 252, 1), #cf23cf);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    padding: 1rem;
 
 }
 
 .logo2 {
     font-size: 30px;
     background: linear-gradient(to right, rgba(106, 17, 203, 1),
-    rgba(37, 117, 252, 1), #cf23cf);
-            -webkit-text-fill-color: transparent;
-            -webkit-background-clip: text;
+            rgba(37, 117, 252, 1), #cf23cf);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
 
 }
 
 
-.loginBtn{
-    background: linear-gradient(to right, #ed43ed,#ed43ed
-    );
-            -webkit-text-fill-color: transparent;
-            -webkit-background-clip: text;
+.loginBtn {
+    background: linear-gradient(to right, #ed43ed, #ed43ed);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
 }
 
 
-
+/* 
 
 @media(min-width: 992px ) {
     .dropdown-toggle{
         display: none;
     }
     main{
-        background-color: #292b2c;
+
         margin: auto;
-        padding: 10px 20px 35px 20px;
+
         width: 50%;
         border-radius: 5px;
     }
@@ -162,10 +169,10 @@ body{
         display: block;
     }
     main{
-        background-color: #292b2c;
+
         margin: auto;
-        padding: 10px 20px 30px 20px;
+
         width: 80%;
         border-radius: 5px;
     }
-}
+} */
