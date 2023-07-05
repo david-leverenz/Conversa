@@ -68,17 +68,15 @@ io.on("connection", function (socket) {
       .to("global")
       .emit("updateChat", "INFO", username + " has joined global room");
     io.sockets.emit("updateUsers", usernames);
-
-
     const updatedRooms = await Room.findAll({ raw: true });
 
-    socket.emit("updateRooms", rooms, "global");
+    socket.emit("updateRooms", updatedRooms, "global");
   });
 
   socket.on("sendMessage", function (data) {
     // send console message to notify message was sent
     console.log(`User ${socket.username} sent message to server.`)
-    
+
     io.sockets.to(socket.currentRoom).emit("updateChat", socket.username, data);
   });
 
