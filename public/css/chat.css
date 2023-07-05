@@ -237,23 +237,15 @@ button:focus {
 }
 
 
-
-.message_holder {
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    margin: 10px 0;
+.me .message_box {
+    order: -1;
+    align-items: flex-end;
 }
 
-.message_box {
-    display: flex;
-    flex-direction: column;
-}
-
-.message_time {
+.me .message_time {
     width: 100%;
-    text-align: start;
-    padding-left: 15px;
+    text-align: end;
+    padding-right: 15px;
     font-size: 0.8rem;
     color: gray;
 }
@@ -268,19 +260,29 @@ button:focus {
     padding: 0.75rem 1rem;
 }
 
+.message_holder {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 10px 0;
+}
 .me {
     justify-content: flex-end;
 }
 
-.me .message_box {
-    order: -1;
-    align-items: flex-end;
+/* .you {
+    justify-content: flex-start;
+} */
+
+.message_box {
+    display: flex;
+    flex-direction: column;
 }
 
-.me .message_time {
+.message_time {
     width: 100%;
-    text-align: end;
-    padding-right: 15px;
+    text-align: start;
+    padding-left: 15px;
     font-size: 0.8rem;
     color: gray;
 }

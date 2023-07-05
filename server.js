@@ -72,6 +72,9 @@ io.on("connection", function (socket) {
   });
 
   socket.on("sendMessage", function (data) {
+    // send console message to notify message was sent
+    console.log(`User ${socket.username} sent message to server.`)
+    
     io.sockets.to(socket.currentRoom).emit("updateChat", socket.username, data);
   });
 
