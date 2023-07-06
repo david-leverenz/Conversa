@@ -1,5 +1,3 @@
-// var userName;
-
 const loginFormHandler = async (event) => {
     event.preventDefault();
 

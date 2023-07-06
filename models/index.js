@@ -10,19 +10,6 @@ Room.belongsToMany (User, {
     }
 });
 
-// User.hasMany (Messages, {
-//     foreignKey: 'user_id',
-//     onDelete: 'CASCADE'
-// });
-
-// Messages.belongsTo (User, {
-//     foreignKey: 'user_id'
-// });
-
-// Messages.belongsTo (Room, {
-//     foreignKey: 'room_id'
-// });
-
 User.belongsToMany (Room, {
     foreignKey: 'user_id',
     through:{
