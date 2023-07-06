@@ -8,7 +8,7 @@ const app = express();
 
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
-const {Messages} = require('./models/');
+const { Messages, Room } = require('./models/');
 
 
 const sequelize = require('./config/connection');
@@ -52,37 +52,38 @@ var rooms = [
 
 
 io.on("connection", function (socket) {
-  console.log(`User connected to server.`);
 
 
-  socket.on("createUser", function (username) {
+  socket.on("createUser", async function (username) {
     socket.username = username;
     usernames[username] = username;
     socket.currentRoom = "global";
     socket.join("global");
 
-    console.log(`User ${username} created on server successfully.`);
 
     socket.emit("updateChat", "INFO", "You have joined global room");
     socket.broadcast
       .to("global")
       .emit("updateChat", "INFO", username + " has joined global room");
     io.sockets.emit("updateUsers", usernames);
-    socket.emit("updateRooms", rooms, "global");
+    const updatedRooms = await Room.findAll({ raw: true });
+
+    socket.emit("updateRooms", updatedRooms, "global");
   });
 
   socket.on("sendMessage", function (data) {
-    // send console message to notify message was sent
-    console.log(`User ${socket.username} sent message to server.`)
-    
+
+
     io.sockets.to(socket.currentRoom).emit("updateChat", socket.username, data);
   });
 
-  socket.on("createRoom", function (room) {
+  socket.on("createRoom", async function (room) {
     if (room != null) {
-      rooms.push({ name: room, creator: socket.username });
-      // run Room.create({ name: room, creator: socket.username })
-      io.sockets.emit("updateRooms", rooms, null);
+      rooms.push({ name: room, description: socket.username });
+      await Room.create({ name: room, description: socket.username })
+      const updatedRooms = await Room.findAll({ raw: true });
+
+      io.sockets.emit("updateRooms", updatedRooms, null);
     }
   });
 
@@ -105,7 +106,6 @@ io.on("connection", function (socket) {
   });
 
   socket.on("disconnect", function () {
-    console.log(`User ${socket.username} disconnected from server.`);
     delete usernames[socket.username];
     io.sockets.emit("updateUsers", usernames);
     socket.broadcast.emit(

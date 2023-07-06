@@ -51,7 +51,7 @@ createRoomBtn.addEventListener("click", function () {
 
 // Update chat on new message
 socket.on("updateChat", function (username, data) {
-   
+
 
     // Display announcement if username is INFO
     if (username === "INFO") {
@@ -92,7 +92,7 @@ socket.on("updateRooms", function (rooms, newRoom) {
                                 <div class="room_item_content">
                                     <div class="roomInfo">
                                     <span class="room_name">#${rooms[index].name}</span>
-                                    <span class="room_author">${rooms[index].creator}</span>
+                                    <span class="room_author">${rooms[index].description}</span>
                                     </div>
                                 </div>
                             </div>`;
@@ -103,6 +103,7 @@ socket.on("updateRooms", function (rooms, newRoom) {
 
 function changeRoom(room) {
     if (room != currentRoom) {
+        chatDisplay.innerHTML = "";
         socket.emit("updateRooms", room);
         document.getElementById(currentRoom).classList.remove("active_item");
         currentRoom = room;
