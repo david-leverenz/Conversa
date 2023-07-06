@@ -1,17 +1,17 @@
+//creating logout functionality for app
 const logout = async () => {
-    // alert ('logout');
-    const response = await fetch('/api/logout', {
+    const response = await fetch('/api/logout', { //logout route to backend
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
     });
   
     if (response.ok) {
-      document.location.replace('/');
+      document.location.replace('/'); //if user presses button the reroute page to login page
     } else {
       alert(response.statusText);
     }
   };
   
-  document
+  document //completeing the event function
   .querySelector('#logoutBtn')
   .addEventListener('click', logout);
