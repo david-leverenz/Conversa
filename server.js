@@ -41,14 +41,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(routes);
 
 
-
-
 var usernames = {};
 var rooms = [
   { name: "global", creator: "Anonymous" },
   { name: "chess", creator: "Anonymous" },
 ];
-
 
 
 io.on("connection", function (socket) {
@@ -115,10 +112,6 @@ io.on("connection", function (socket) {
     );
   });
 });
-
-
-
-
 
 sequelize.sync({ force: false }).then(() => {
   http.listen(PORT, () => console.log(`Now listening http://localhost:${PORT}/`));
