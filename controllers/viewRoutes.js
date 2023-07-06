@@ -12,19 +12,12 @@ router.get('/', async (req, res) => {
             }]
         });
         const newRoomData = roomData.map(room => room.get ({ plain:true }));
-        //console.log(newRoomData);
         res.render('login', {newRoomData});
     } catch (error) {
         res.status(500).json(error)
     };
 });
-// router.get('/',(req,res)=>{
-//     res.redirect('/chat')
-// })
-// router.get('/chat', (req, res) => {
-//     res.render('chat')
-// })
-// // com
+
 router.get('/chat', async (req, res) => {
     try {
 

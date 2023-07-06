@@ -52,7 +52,6 @@ var rooms = [
 
 
 io.on("connection", function (socket) {
-  console.log(`User connected to server.`);
 
 
   socket.on("createUser", async function (username) {
@@ -61,7 +60,6 @@ io.on("connection", function (socket) {
     socket.currentRoom = "global";
     socket.join("global");
 
-    console.log(`User ${username} created on server successfully.`);
 
     socket.emit("updateChat", "INFO", "You have joined global room");
     socket.broadcast
@@ -74,8 +72,7 @@ io.on("connection", function (socket) {
   });
 
   socket.on("sendMessage", function (data) {
-    // send console message to notify message was sent
-    console.log(`User ${socket.username} sent message to server.`)
+
 
     io.sockets.to(socket.currentRoom).emit("updateChat", socket.username, data);
   });
@@ -109,7 +106,6 @@ io.on("connection", function (socket) {
   });
 
   socket.on("disconnect", function () {
-    console.log(`User ${socket.username} disconnected from server.`);
     delete usernames[socket.username];
     io.sockets.emit("updateUsers", usernames);
     socket.broadcast.emit(
