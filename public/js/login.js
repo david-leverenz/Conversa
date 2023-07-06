@@ -1,4 +1,5 @@
 // This collects the user name and password then calls the login api.  If the login is successful that chat route is used.  The button at the bottom of the code launches the event.
+
 const loginFormHandler = async (event) => {
     event.preventDefault();
 
