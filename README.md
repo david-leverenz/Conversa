@@ -15,13 +15,14 @@ This is a chat application designed for Bootcamp students.
 ## Description
 
 
-
 ## Links
-**GitHub:** <br>
-**Walkthrough Video:** N/A<br>
-**Live Link:** <br>
+**GitHub:** https://github.com/Tazzok/Conversa<br>
+**Live Link:** https://glacial-retreat-55069-949bcbbb662e.herokuapp.com/<br>
 **Screen Shot:** <br>
+![image](https://github.com/Tazzok/Conversa/assets/131185593/75b14f38-deab-4121-b3bb-8bb60bc6a9cf)
 
+
+![image](https://github.com/Tazzok/Conversa/assets/131185593/e86b2372-a202-412a-98ce-77ffaa2c4697)
 
 ## Usage
 N/A
