@@ -16,7 +16,7 @@ if (process.env.JAWSDB_URL) {
       dialect: 'mysql',
       port: 3306,
       logging: false, // Disable query logging
-
+      // logging: console.log // Enable Sequelize logging
     }
   );
 }
